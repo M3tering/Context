@@ -52,5 +52,5 @@ contract M3terContext is IM3terContext, Initializable, AccessControlUpgradeable,
         keyRegistry[publicKey] = tokenId;
     }
 
-    function _authorizeUpgrade(address newImplementation) private override onlyRole(UPGRADER_ROLE) {}
+    function _authorizeUpgrade(address newImplementation) internal override onlyRole(UPGRADER) {}
 }
