@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-interface IM3terContext {
+interface IContext {
     struct Detail {
         // Identifiers
         uint256 tokenId;
