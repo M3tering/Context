@@ -8,10 +8,10 @@ interface IContext {
         bytes32 publicKey;
         bytes32 processId;
         // Terms of Use
-        uint256 tariff;
-        uint256 escalator;
-        uint256 blockInterval;
-        uint256 lastCheckpoint;
+        uint16 energyPrice;
+        uint16 escalator;
+        uint48 blockInterval;
+        uint48 lastCheckpoint;
     }
 
     event Register(uint256 indexed tokenId, bytes32 indexed publicKey, address from, uint256 timestamp);
@@ -23,7 +23,7 @@ interface IContext {
         uint256 tokenId,
         bytes32 publicKey,
         bytes32 processId,
-        uint256 tariff,
+        uint256 energyPrice,
         uint256 escalator,
         uint256 interval
     ) external;

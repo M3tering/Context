@@ -39,13 +39,15 @@ contract Context is IContext, Initializable, AccessControlUpgradeable, UUPSUpgra
         uint256 tokenId,
         bytes32 publicKey,
         bytes32 processId,
-        uint256 tariff,
+        uint256 energyPrice,
         uint256 escalator,
         uint256 interval
     ) external {
         if (msg.sender != M3TER.ownerOf(tokenId)) revert Unauthorized();
-        if (tokenId == 0 || publicKey == 0 || processId == 0 || tariff == 0) revert CannotBeZero();
-        details[tokenId] = Detail(tokenId, publicKey, processId, tariff, escalator, interval, block.number);
+        if (tokenId == 0 || publicKey == 0 || processId == 0 || energyPrice == 0) revert CannotBeZero();
+        details[tokenId] = Detail(
+            tokenId, publicKey, processId, uint16(energyPrice), uint16(escalator), uint48(interval), uint48(block.number)
+        );
 
         emit Register(tokenId, publicKey, msg.sender, block.timestamp);
         processRegistry[processId] = tokenId;
